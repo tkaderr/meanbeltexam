@@ -12,8 +12,11 @@ export class AddtopicComponent implements OnInit {
 @Output() createtopic = new EventEmitter();
 
 newtopic = {
-  name: '',
-  description: ''
+  question: '',
+  option1: '',
+  option2: '',
+  option3: '',
+  option4: ''
 };
 curruser : string
 topicid;

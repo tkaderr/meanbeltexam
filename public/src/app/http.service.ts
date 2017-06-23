@@ -7,27 +7,14 @@ export class HttpService {
 
   constructor(private _http: Http) { }
 
-  retrieveAll() {
-    return this._http.get(`/items`)
-    .map( data => data.json() )
-    .toPromise();
-  }
+//User CRUD
   createUser(user) {
     console.log("in services",user);
     return this._http.post('/user_new', user)
     .map( data => data.json() )
     .toPromise();
   }
-  retrieveOne(id) {
-    return this._http.get(`/items/${id}`)
-    .map( data => data.json() )
-    .toPromise();
-  }
-  update(item, id) {
-    return this._http.put(`/items/${id}`, item)
-    .map( data => data.json() )
-    .toPromise();
-  }
+
 
 
   //Topic CRUD's
@@ -62,14 +49,27 @@ export class HttpService {
     .toPromise();
   }
 
-  //Post CRUD:
-
-  createPost(post, name) {
-    return this._http.post(`/post/${name}`, post)
+  upvote1(post){
+    return this._http.post(`/upvote1`, post)
     .map( data => data.json() )
     .toPromise();
   }
 
+  upvote2(post){
+    return this._http.post(`/upvote2`, post)
+    .map( data => data.json() )
+    .toPromise();
+  }
 
+  upvote3(post){
+    return this._http.post(`/upvote3`, post)
+    .map( data => data.json() )
+    .toPromise();
+  }
+  upvote4(post){
+    return this._http.post(`/upvote4`, post)
+    .map( data => data.json() )
+    .toPromise();
+  }
 
 }

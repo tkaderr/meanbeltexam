@@ -1,30 +1,35 @@
-<h3>Welcome, {{key}}!</h3>
-
 <p>
-<a [routerLink] = "['/dashboard']"> Dashboard </a> |
 <a [routerLink] = "['/logout']" (click)="logout()"> Logout </a>
 </p>
+<h2>Welcome, {{key}}!</h2>
+<h3>Current Poll</h3>
+
+<form>
+<input type="text" name= "search" value="" placeholder="search"><br>  
+</form>
+<br>
 
 <div>
-  <table>
+  <table  [ngStyle]="{
+  'border': '1px solid black'
+}">
   <thead>
    
-    <th>Posts Name:</th>
-    <th>Description:</th>
-    <th>Number of Comments:</th>
-    <th>Action:Edit</th>
+    <th>User Name:</th>
+    <th>Survey Question:</th>
+    <th>Date Posted:</th>
     <th>Action:Delete</th>
   </thead>
   <tbody>
     <tr *ngFor = "let topic of topics">
-      <td><a [routerLink]="['/topic',topic._id]">{{topic.name}}</a></td>
-      <td>{{topic.description}}</td>
-      <td>{{topic.posts.length}}</td>
-      <td *ngIf = 'key === topic._user.username'><p [routerLink]="['/edit',topic._id]">Edit</p> </td>
-      <td *ngIf = 'key === topic._user.username'><p (click)="destroy(topic._id, topic.description)">Delete </p> </td>
+      <td>{{topic._user.username}}</td>
+      <td><a [routerLink]="['/poll',topic._id]">{{topic.question}}</a></td>
+      <td>{{topic.createdAt | date:'longDate'}}</td>
+      <td *ngIf = 'key === topic._user.username'><button (click)="destroy(topic._id, topic.description)">Delete </button> </td>
     </tr>
   </tbody>
 </table>
 <br>
+<h3>Question Form:</h3>
 <app-addtopic (createtopic) = "updatetopics()"></app-addtopic>
 </div>

@@ -1,23 +1,45 @@
 
 <p>
-<a [routerLink] = "['/dashboard']"> Dashboard </a> |
-<a [routerLink] = "['/logout']" (click)="logout()"> Logout </a>
+<a [routerLink] = "['/dashboard']"> Go to Polls </a> 
 </p>
-<p> Creator: <a> {{currtopic[0]?._user.username | json}} </a> </p>
-<p>Description: {{currtopic[0]?.description | json}}</p>
-<p>Number of Posts: {{currtopic[0]?.posts.length | json}}</p>
-<p>Post your comments here...</p>
 
 
-<div *ngFor = "let post of currtopic[0].posts">
-    <p>
-        <a>{{post?.username}}</a> : {{post?.content}}
-    </p>
-</div>
+<h3> {{currtopic[0]?.question | json}} </h3>
+<p>Click the Vote button to choose one</p>
+
+<div>
+  <table [ngStyle]="{
+  'border': '1px solid black'
+}">
+  <thead>
+   
+    <th>Option:</th>
+    <th>Current Count of Votes:</th>
+    <th>Action:Vote</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{currtopic[0]?.option1 | json}}</td>
+      <td>{{currtopic[0]?.vote1 | json}}</td>
+      <td><button (click)='vote1(currtopic[0]._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{currtopic[0]?.option2 | json}}</td>
+      <td>{{currtopic[0]?.vote2 | json}}</td>
+      <td><button (click)='vote2(currtopic[0]._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{currtopic[0]?.option3 | json}}</td>
+      <td>{{currtopic[0]?.vote3 | json}}</td>
+      <td><button (click)='vote3(currtopic[0]._id)'>Vote</button></td>
+    </tr>
+    <tr>
+      <td>{{currtopic[0]?.option4 | json}}</td>
+      <td>{{currtopic[0]?.vote4 | json}}</td>
+      <td><button (click)='vote4(currtopic[0]._id)'>Vote</button></td>
+    </tr>
+  </tbody>
+</table>
 
 
-<form #postForm='ngForm' (submit)="addComment(postForm)">
-<input type="text" name="content" [(ngModel)]="post.content" required minlength= '5' #content ='ngModel'>
-<input type="submit" class="waves-effect waves-light btn" value ="Comment" [disabled]="!postForm.valid">
-</form>
 

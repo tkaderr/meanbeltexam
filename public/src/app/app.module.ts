@@ -8,8 +8,8 @@ import { HttpService } from './http.service';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+//import { CreateComponent } from './create/create.component';
 import { AddtopicComponent } from './addtopic/addtopic.component';
-import { EditComponent } from './edit/edit.component';
 import { TopicdetailComponent } from './topicdetail/topicdetail.component';
 
 
@@ -18,8 +18,8 @@ import { TopicdetailComponent } from './topicdetail/topicdetail.component';
     AppComponent,
     DashboardComponent,
     LoginComponent,
+    //CreateComponent,
     AddtopicComponent,
-    EditComponent,
     TopicdetailComponent,
   ],
   imports: [
