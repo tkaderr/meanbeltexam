@@ -1,0 +1,23 @@
+
+<p>
+<a [routerLink] = "['/dashboard']"> Dashboard </a> |
+<a [routerLink] = "['/logout']" (click)="logout()"> Logout </a>
+</p>
+<p> Creator: <a> {{currtopic[0]?._user.username | json}} </a> </p>
+<p>Description: {{currtopic[0]?.description | json}}</p>
+<p>Number of Posts: {{currtopic[0]?.posts.length | json}}</p>
+<p>Post your comments here...</p>
+
+
+<div *ngFor = "let post of currtopic[0].posts">
+    <p>
+        <a>{{post?.username}}</a> : {{post?.content}}
+    </p>
+</div>
+
+
+<form #postForm='ngForm' (submit)="addComment(postForm)">
+<input type="text" name="content" [(ngModel)]="post.content" required minlength= '5' #content ='ngModel'>
+<input type="submit" class="waves-effect waves-light btn" value ="Comment" [disabled]="!postForm.valid">
+</form>
+

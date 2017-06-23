@@ -1,0 +1,29 @@
+
+    <form #formTopic = 'ngForm' (submit)='create(formTopic)'>
+      <label for="topic">Name:</label>
+      <input type="text" name="name" id = "topic" value="" 
+      required
+      minlength = 5
+      [(ngModel)] = 'newtopic.name' 
+      #name = 'ngModel'>
+       <div *ngIf='name.errors && (name.touched || formTopic.submitted)'>
+          <small id = "red" *ngIf = "name.errors?.required">* Topic is required</small><br>
+          <small id = "red" *ngIf = "name.errors?.minlength">* Topic must be at least 5 characters long</small>
+      </div>
+
+       <label for="description">Description:</label>
+      <input type="text" name="description" id = "description" value="" 
+      required
+      minlength = 5
+      [(ngModel)] = 'newtopic.description' 
+      #description = 'ngModel'>
+       <div *ngIf='description.errors && (description.touched || formTopic.submitted)'>
+          <small id = "red" *ngIf = "description.errors?.required">* Description is required</small><br>
+          <small id = "red" *ngIf = "description.errors?.minlength">* Description must be at least 5 characters long</small>
+      </div>
+      
+         <button class = "col s2 offset-s10" type="submit" [disabled] = "!formTopic.form.valid" name="submit" value="Add Topic" class = "waves-effect waves-light btn green">Add Topic </button>
+      
+    </form>
+  
+ 
